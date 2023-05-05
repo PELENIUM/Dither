@@ -1,0 +1,14 @@
+﻿  main.cpp
+C:\development\C++\SFML\image-changer\main.cpp(40,19): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+C:\development\C++\SFML\image-changer\main.cpp(66,33): warning C4244: инициализация: преобразование "double" в "float", возможна потеря данных
+C:\development\C++\SFML\image-changer\main.cpp(95,70): warning C4244: аргумент: преобразование "int" в "T", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+C:\development\C++\SFML\image-changer\main.cpp(95,63): warning C4244: аргумент: преобразование "int" в "T", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+  SFML.vcxproj -> C:\development\C++\SFML\image-changer\x64\Debug\SFML.exe

@@ -4,6 +4,6 @@
 *.pdb 
 *.idb 
 SFML.sln 
-*.vcxproj 
-*.filters 
-*.user 
+SFML.vcxproj 
+SFML.vcxproj.filters 
+SFML.vcxproj.user 

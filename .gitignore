@@ -1,0 +1,9 @@
+*.log 
+*.obj 
+*.ilk 
+*.pdb 
+*.idb 
+SFML.sln 
+*.vcxproj 
+*.filters 
+*.user 

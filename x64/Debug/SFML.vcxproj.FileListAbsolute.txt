@@ -1,1 +1,0 @@
-C:\development\C++\SFML\image-changer\x64\Debug\SFML.exe

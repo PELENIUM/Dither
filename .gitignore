@@ -1,9 +1,0 @@
-*.log 
-*.obj 
-*.ilk 
-*.pdb 
-*.idb 
-SFML.sln 
-SFML.vcxproj 
-SFML.vcxproj.filters 
-SFML.vcxproj.user 

@@ -9,3 +9,14 @@ C:\development\C#\Dither\obj\Release\Dither.csproj.GenerateResource.cache
 C:\development\C#\Dither\obj\Release\Dither.csproj.CoreCompileInputs.cache
 C:\development\C#\Dither\obj\Release\Dither.exe
 C:\development\C#\Dither\obj\Release\Dither.pdb
+C:\development\C#\fxj\bin\Release\Dither.exe.config
+C:\development\C#\fxj\bin\Release\Dither.exe
+C:\development\C#\fxj\bin\Release\Dither.pdb
+C:\development\C#\fxj\obj\Release\Dither.csproj.AssemblyReference.cache
+C:\development\C#\fxj\obj\Release\Dither.csproj.SuggestedBindingRedirects.cache
+C:\development\C#\fxj\obj\Release\Dither.MainForm.resources
+C:\development\C#\fxj\obj\Release\Dither.Properties.Resources.resources
+C:\development\C#\fxj\obj\Release\Dither.csproj.GenerateResource.cache
+C:\development\C#\fxj\obj\Release\Dither.csproj.CoreCompileInputs.cache
+C:\development\C#\fxj\obj\Release\Dither.exe
+C:\development\C#\fxj\obj\Release\Dither.pdb

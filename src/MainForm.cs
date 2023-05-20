@@ -16,12 +16,12 @@ namespace Dither
         public MainForm()
         {
             InitializeComponent();
-            
         }
 
         private void LoadButton_Click(object sender, EventArgs e)
         {
-            StyleBox.SelectedIndex = 0;
+            if (StyleBox.SelectedIndex == -1)
+                StyleBox.SelectedIndex = 0;
             OpenFileDialog fileDialog = new OpenFileDialog();
             fileDialog.Filter = "Image Files (*.jpg;*.png;*jpeg)|*.jpg;*.png;*jpeg";
             if (fileDialog.ShowDialog() == DialogResult.OK)
@@ -32,19 +32,25 @@ namespace Dither
 
                 Image img = Image.FromFile(path);
 
-                Width = img.Width + 40;
-                Height = img.Height + 117;
+                Width = Math.Max(723, img.Width * 2 + 46);
+                Height = Math.Max(158, img.Height + 114);
 
-                LoadButton.Location = new Point(12, 24 + img.Height);
-                SaveButton.Location = new Point(108, 24 + img.Height);
-                NoiseLevel.Location = new Point(206, 24 + img.Height);
-                StyleBox.Location = new Point(581, 24 + img.Height);
-                
-                Image shownImg = dither.Change(path, 0);
+                LoadButton.Location = new Point(11, Height - LoadButton.Height - 50);
+                SaveButton.Location = new Point(107, Height - LoadButton.Height - 50);
+                NoiseLevel.Location = new Point(205, Height - LoadButton.Height - 50);
+                StyleBox.Location = new Point(580, Height - LoadButton.Height - 40);
+
+                int noise = NoiseLevel.Value;
+                Image editedImg = dither.Change(path, noise);
+
+                Picture.Image = img;
+                Picture.Height = img.Height;
+                Picture.Width = img.Width;
 
                 EditedPicture.Height = img.Height;
                 EditedPicture.Width = img.Width;
-                EditedPicture.Image = shownImg;
+                EditedPicture.Image = editedImg;
+                EditedPicture.Location = new Point(12 + img.Width + 6, 12);
             }
         }
 
@@ -86,6 +92,11 @@ namespace Dither
                     img.Dispose();
                 }
             }
+        }
+
+        private void Pixeled_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

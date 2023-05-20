@@ -5,12 +5,14 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms.VisualStyles;
 
 namespace Dither
 {
     internal class DitherClass
     {
         private Image image;
+        private Bitmap imageBitmap;
         private Bitmap img;
 
         private Palette palette = Palette.Pastel;
@@ -19,171 +21,233 @@ namespace Dither
 
         public DitherClass()
         {
-            colors[0] = new Color[] { 
-                                      Color.FromArgb(12, 33, 88),
-                                      Color.FromArgb(39, 77, 116),
-                                      Color.FromArgb(112, 137, 144),
-                                      Color.FromArgb(197, 105, 64),
-                                      Color.FromArgb(213, 208, 202)
+            colors[0] = new Color[] {
+                                      Color.FromArgb(0,0,0),
+                                      Color.FromArgb(0, 0, 0),
+                                      Color.FromArgb(128, 0, 0),
+                                      Color.FromArgb(0, 128, 0),
+                                      Color.FromArgb(128, 128, 0),
+                                      Color.FromArgb(0, 0, 128),
+                                      Color.FromArgb(128, 0, 128),
+                                      Color.FromArgb(0, 128, 128),
+                                      Color.FromArgb(192, 192, 192),
+                                      Color.FromArgb(128, 128, 128),
+                                      Color.FromArgb(255, 0, 0),
+                                      Color.FromArgb(0, 255, 0),
+                                      Color.FromArgb(255, 255, 0),
+                                      Color.FromArgb(0, 0, 255),
+                                      Color.FromArgb(255, 0, 255),
+                                      Color.FromArgb(0, 255, 255),
+                                      Color.FromArgb(255, 255, 255),
+                                      Color.FromArgb(0, 0, 64),
+                                      Color.FromArgb(0, 0, 192),
+                                      Color.FromArgb(0, 64, 0),
+                                      Color.FromArgb(0, 64, 128),
+                                      Color.FromArgb(0, 128, 64),
+                                      Color.FromArgb(0, 128, 192),
+                                      Color.FromArgb(64, 0, 0),
+                                      Color.FromArgb(64, 0, 128),
+                                      Color.FromArgb(64, 64, 0),
+                                      Color.FromArgb(64, 64, 192),
+                                      Color.FromArgb(64, 128, 0),
+                                      Color.FromArgb(64, 128, 128),
+                                      Color.FromArgb(128, 0, 64),
+                                      Color.FromArgb(128, 0, 192),
+                                      Color.FromArgb(128, 64, 0),
+                                      Color.FromArgb(128, 64, 128),
+                                      Color.FromArgb(128, 128, 64),
+                                      Color.FromArgb(128, 128, 192)
                                     };
 
             colors[1] = new Color[] {
-                                      Color.FromArgb(43, 55, 65),
-                                      Color.FromArgb(39, 77, 116),
-                                      Color.FromArgb(113, 131, 140),
-                                      Color.FromArgb(148, 170, 178),
-                                      Color.FromArgb(183, 209, 216)
+                                      Color.FromArgb(0, 0, 0),
+                                      Color.FromArgb(34, 32, 52),
+                                      Color.FromArgb(69, 40, 60),
+                                      Color.FromArgb(102, 57, 49),
+                                      Color.FromArgb(143, 86, 59),
+                                      Color.FromArgb(223, 113, 38),
+                                      Color.FromArgb(217, 160, 102),
+                                      Color.FromArgb(238, 195, 154),
+                                      Color.FromArgb(251, 242, 54),
+                                      Color.FromArgb(153, 229, 80),
+                                      Color.FromArgb(106, 190, 48),
+                                      Color.FromArgb(55, 148, 110),
+                                      Color.FromArgb(75, 105, 47),
+                                      Color.FromArgb(82, 75, 36),
+                                      Color.FromArgb(50, 60, 57),
+                                      Color.FromArgb(63, 63, 116),
+                                      Color.FromArgb(48, 96, 130),
+                                      Color.FromArgb(91, 110, 225),
+                                      Color.FromArgb(99, 155, 255),
+                                      Color.FromArgb(95, 205, 228),
+                                      Color.FromArgb(203, 219, 252),
+                                      Color.FromArgb(255, 255, 255)
                                     };
 
             colors[2] = new Color[] {
-                                      Color.FromArgb(139, 69, 19),
-                                      Color.FromArgb(255, 160, 122),
-                                      Color.FromArgb(255, 182, 193),
-                                      Color.FromArgb(255, 99, 71),
-                                      Color.FromArgb(255, 255, 153)
+                                      Color.FromArgb(144, 12, 63),
+                                      Color.FromArgb(244, 67, 54),
+                                      Color.FromArgb(233, 30, 99),
+                                      Color.FromArgb(156, 39, 176),
+                                      Color.FromArgb(103, 58, 183),
+                                      Color.FromArgb(63, 81, 181),
+                                      Color.FromArgb(33, 150, 243),
+                                      Color.FromArgb(3, 169, 244),
+                                      Color.FromArgb(0, 188, 212),
+                                      Color.FromArgb(0, 150, 136),
+                                      Color.FromArgb(76, 175, 80),
+                                      Color.FromArgb(139, 195, 74),
+                                      Color.FromArgb(205, 220, 57),
+                                      Color.FromArgb(255, 235, 59),
+                                      Color.FromArgb(255, 193, 7),
+                                      Color.FromArgb(255, 152, 0),
+                                      Color.FromArgb(255, 87, 34),
+                                      Color.FromArgb(121, 85, 72),
+                                      Color.FromArgb(158, 158, 158),
+                                      Color.FromArgb(96, 125, 139),
+                                      Color.FromArgb(38, 50, 56),
+                                      Color.FromArgb(0, 0, 0),
+                                      Color.FromArgb(255, 255, 255),
+                                      Color.FromArgb(236, 239, 241),
+                                      Color.FromArgb(189, 189, 189),
+                                      Color.FromArgb(117, 117, 117),
+                                      Color.FromArgb(97, 97, 97),
+                                      Color.FromArgb(66, 66, 66),
+                                      Color.FromArgb(33, 33, 33),
+                                      Color.FromArgb(25, 25, 25)
                                     };
 
             colors[3] = new Color[] {
-                                      Color.FromArgb(99, 72, 63),
-                                      Color.FromArgb(132, 99, 87),
-                                      Color.FromArgb(165, 126, 112),
-                                      Color.FromArgb(198, 153, 137),
-                                      Color.FromArgb(231, 180, 162)
+                                      Color.FromArgb(255, 0, 0),
+                                      Color.FromArgb(255, 128, 128),
+                                      Color.FromArgb(255, 255, 0),
+                                      Color.FromArgb(255, 255, 128),
+                                      Color.FromArgb(0, 255, 0),
+                                      Color.FromArgb(128, 255, 128),
+                                      Color.FromArgb(0, 255, 255),
+                                      Color.FromArgb(128, 255, 255),
+                                      Color.FromArgb(0, 0, 255),
+                                      Color.FromArgb(128, 128, 255),
+                                      Color.FromArgb(255, 0, 255),
+                                      Color.FromArgb(255, 128, 255),
+                                      Color.FromArgb(128, 0, 0),
+                                      Color.FromArgb(192, 0, 0),
+                                      Color.FromArgb(64, 0, 0),
+                                      Color.FromArgb(255, 64, 64),
+                                      Color.FromArgb(192, 64, 64),
+                                      Color.FromArgb(128, 64, 64),
+                                      Color.FromArgb(64, 64, 64),
+                                      Color.FromArgb(128, 128, 128),
+                                      Color.FromArgb(192, 192, 192),
+                                      Color.FromArgb(255, 255, 255),
+                                      Color.FromArgb(0, 0, 0),
+                                      Color.FromArgb(51, 51, 51),
+                                      Color.FromArgb(102, 102, 102),
+                                      Color.FromArgb(153, 153, 153),
+                                      Color.FromArgb(204, 204, 204),
+                                      Color.FromArgb(255, 255, 254),
+                                      Color.FromArgb(255, 255, 253),
+                                      Color.FromArgb(255, 255, 252),
+                                      Color.FromArgb(255, 255, 251)
                                     };
 
             colors[4] = new Color[] {
-                                      Color.FromArgb(100, 70, 108),
-                                      Color.FromArgb(130, 94, 143),
-                                      Color.FromArgb(160, 118, 178),
-                                      Color.FromArgb(190, 142, 213),
-                                      Color.FromArgb(220, 166, 248)
+                                      Color.FromArgb(0, 0, 0),
+                                      Color.FromArgb(128, 0, 0),
+                                      Color.FromArgb(0, 128, 0),
+                                      Color.FromArgb(128, 128, 0),
+                                      Color.FromArgb(0, 0, 128),
+                                      Color.FromArgb(128, 0, 128),
+                                      Color.FromArgb(0, 128, 128),
+                                      Color.FromArgb(192, 192, 192),
+                                      Color.FromArgb(128, 128, 128),
+                                      Color.FromArgb(255, 0, 0),
+                                      Color.FromArgb(0, 255, 0),
+                                      Color.FromArgb(255, 255, 0),
+                                      Color.FromArgb(0, 0, 255),
+                                      Color.FromArgb(255, 0, 255),
+                                      Color.FromArgb(0, 255, 255),
+                                      Color.FromArgb(255, 255, 255),
+                                      Color.FromArgb(255, 255, 254),
+                                      Color.FromArgb(255, 255, 253),
+                                      Color.FromArgb(255, 255, 252),
+                                      Color.FromArgb(255, 255, 251),
+                                      Color.FromArgb(255, 255, 250),
+                                      Color.FromArgb(255, 255, 249),
+                                      Color.FromArgb(255, 255, 248),
+                                      Color.FromArgb(255, 255, 247),
+                                      Color.FromArgb(255, 255, 246),
+                                      Color.FromArgb(255, 255, 245),
+                                      Color.FromArgb(255, 255, 244),
+                                      Color.FromArgb(255, 255, 243),
+                                      Color.FromArgb(255, 255, 242),
+                                      Color.FromArgb(255, 255, 241),
+                                      Color.FromArgb(255, 255, 240),
+                                      Color.FromArgb(255, 255, 239)
                                     };
 
-            colors[5] = new Color[] { Color.FromArgb(0, 0, 0), 
+            colors[5] = new Color[] { 
+                                      Color.FromArgb(0, 0, 0), 
                                       Color.FromArgb(255, 255, 255)
                                     };
         }
-
-        /*
-         SoftBlue:
-
-            rgb(250, 218, 221)
-            rgb(254, 255, 207)
-            rgb(204, 228, 247)
-            rgb(196, 246, 195)
-            rgb(224, 195, 252)
-
-         
-         WarmTones:
-
-            rgb(255, 160, 122)
-            rgb(255, 255, 153)
-            rgb(255, 182, 193)
-            rgb(255, 99, 71)
-            rgb(139, 69, 19)
- 
-         
-         AutumnShades:
-
-            rgb(128, 0, 0)
-            rgb(255, 194, 14)
-            rgb(204, 119, 34)
-            rgb(85, 107, 47)
-            rgb(210, 105, 30)
-
-        
-         SeaTones:
-
-            rgb(135, 206, 235)
-            rgb(0, 0, 128)
-            rgb(64, 224, 208)
-            rgb(75, 0, 130)
-            rgb(46, 139, 87)
-         */
 
         public void SetPalette(Palette num)
         {
             palette = num;
         }
 
-        private Color ChooseColor(double c)
+        private Color ClosestColor(int r, int g, int b)
         {
-            Color result = new Color();
+            Color color = new Color();
 
-            float n = 256 / colors[(int)palette].Length;
-
-            for (int i = colors[(int)palette].Length; i >= 0; i--)
+            double minDistance = 10000000000000000000;
+            for (int i = 0; i < colors[(int)palette].Length; i++)
             {
-                if (c > n * i)
+
+                int r1 = colors[(int)palette][i].R;
+                int g1 = colors[(int)palette][i].G;
+                int b1 = colors[(int)palette][i].B;
+
+                double distance = Math.Sqrt( Math.Pow((r - r1), 2) + Math.Pow((g - g1), 2) + Math.Pow((b - b1), 2) );
+
+                if (distance < minDistance)
                 {
-                    result = colors[(int)palette][i];
-                    goto next;
+                    minDistance = distance;
+                    color = Color.FromArgb(r1, g1, b1);
                 }
             }
 
-            result = colors[(int)palette][0];
-
-        next:
-            return result;
+            return color;
         }
 
         private void MakeDithered(float noise)
         {
+
             Random rand = new Random();
-
-            for (int i = 0; i < img.Height; i++)
+            for (int i = 0; i < imageBitmap.Height; i++)
             {
-                for (int j = 0; j < img.Width; j++)
+                for (int j = 0; j < imageBitmap.Width; j++)
                 {
-                    int r = 0;
-                    int g = 0;
-                    int b = 0;
+                    int n = rand.Next((int)(-100 * noise / 50), (int)(100 * noise / 50));
 
-                    r = img.GetPixel(j, i).R;
-                    g = img.GetPixel(j, i).G;
-                    b = img.GetPixel(j, i).B;
+                    int[,] bayer = new int[2, 2] { 
+                                                   { 0, 2 },
+                                                   { 3, 1 } 
+                                                  };
 
-                    double c = 0.2989 * r + 0.5870 * g + 0.1140 * b + rand.Next((int) (-128 * noise / 10), (int)(128 * noise / 10));
+                    int r = imageBitmap.GetPixel(j, i).R + n + bayer[j % 2, i % 2];
+                    int g = imageBitmap.GetPixel(j, i).G + n + bayer[j % 2, i % 2];
+                    int b = imageBitmap.GetPixel(j, i).B + n + bayer[j % 2, i % 2];
 
-                    c = c > 127 ? 255 : 0;
+                    r = Math.Max(0, Math.Min(255, r));
+                    g = Math.Max(0, Math.Min(255, g));
+                    b = Math.Max(0, Math.Min(255, b));
 
-                    img.SetPixel(j, i, Color.FromArgb((int)c, (int)c, (int)c));
-                }
-            }
 
-            for (int i = 0; i < img.Height / 2; i++)
-            {
-                for (int j = 0; j < img.Width / 2; j++)
-                {
-                    int r = 0;
-                    int g = 0;
-                    int b = 0;
+                    Color newColor = ClosestColor(r, g, b);
 
-                    for (int i1 = i * 2; i1 < i * 2 + 2; i1++)
-                    {
-                        for (int j1 = j * 2; j1 < j * 2 + 2; j1++)
-                        {
-                            r += img.GetPixel(j1, i1).R;
-                            g += img.GetPixel(j1, i1).G;
-                            b += img.GetPixel(j1, i1).B;
-                        }
-                    }
-
-                    r /= 4;
-                    g /= 4;
-                    b /= 4;
-
-                    double c = 0.2989 * r + 0.5870 * g + 0.1140 * b;
-
-                    c = Math.Max(0, Math.Min(255, c));
-
-                    Graphics gr = Graphics.FromImage(img);
-
-                    Rectangle rect = new Rectangle(j * 2, i * 2, 2, 2);
-
-                    SolidBrush brush = new SolidBrush(ChooseColor(c));
-
-                    gr.FillRectangle(brush, rect);
+                    img.SetPixel(j, i, newColor);
                 }
             }
         }
@@ -191,11 +255,13 @@ namespace Dither
         public Image Change(string path, float noise)
         {
             image = Image.FromFile(path);
-            img = new Bitmap(image);
+            img = new Bitmap(image.Width, image.Height);
+            imageBitmap = new Bitmap(image);
 
             MakeDithered(noise);
 
             image.Dispose();
+            imageBitmap.Dispose();
 
             return img;
         }
@@ -203,7 +269,7 @@ namespace Dither
         public enum Palette
         {
             Pastel,
-            SoftBlue,
+            SoftYellow,
             WarmTones,
             AutumnShades,
             FluentPurple,

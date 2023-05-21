@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Drawing.Imaging;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms.VisualStyles;
 
 namespace Dither
 {
@@ -223,7 +217,6 @@ namespace Dither
 
         private void MakeDithered(float noise)
         {
-
             Random rand = new Random();
             for (int i = 0; i < imageBitmap.Height; i++)
             {
@@ -232,8 +225,8 @@ namespace Dither
                     int n = rand.Next((int)(-100 * noise / 50), (int)(100 * noise / 50));
 
                     int[,] bayer = new int[2, 2] { 
-                                                   { 0, 2 },
-                                                   { 3, 1 } 
+                                                    { 0, 2 },
+                                                    { 3, 1 } 
                                                   };
 
                     int r = imageBitmap.GetPixel(j, i).R + n + bayer[j % 2, i % 2];

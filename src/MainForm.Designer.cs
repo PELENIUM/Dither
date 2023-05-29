@@ -84,8 +84,8 @@ namespace Dither
             // NoiseLevel
             // 
             this.NoiseLevel.Location = new System.Drawing.Point(204, 62);
-            this.NoiseLevel.Minimum = 1;
             this.NoiseLevel.Maximum = 50;
+            this.NoiseLevel.Minimum = 1;
             this.NoiseLevel.Name = "NoiseLevel";
             this.NoiseLevel.Size = new System.Drawing.Size(363, 45);
             this.NoiseLevel.TabIndex = 3;
@@ -102,6 +102,7 @@ namespace Dither
             "WarmTones",
             "AutumnShades",
             "FluentPurple",
+            "Filosofem",
             "BlackAndWhite"});
             this.StyleBox.Location = new System.Drawing.Point(573, 73);
             this.StyleBox.Name = "StyleBox";

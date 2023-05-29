@@ -11,7 +11,7 @@ namespace Dither
 
         private Palette palette = Palette.Pastel;
 
-        Color[][] colors = new Color[6][];
+        Color[][] colors = new Color[7][];
 
         public DitherClass()
         {
@@ -179,8 +179,20 @@ namespace Dither
                                       Color.FromArgb(255, 255, 240),
                                       Color.FromArgb(255, 255, 239)
                                     };
+            colors[5] = new Color[] {
+                                      Color.FromArgb(188, 150, 100),
+                                      Color.FromArgb(180, 116, 100),
+                                      Color.FromArgb(216, 216, 211),
+                                      Color.FromArgb(151, 151, 168),
+                                      Color.FromArgb(164, 169, 156),
+                                      Color.FromArgb(142, 130, 119),
+                                      Color.FromArgb(103, 102, 120),
+                                      Color.FromArgb(108, 120, 107),
+                                      Color.FromArgb(101, 91, 85),
+                                      Color.FromArgb(51, 51, 52),
+                                    };
 
-            colors[5] = new Color[] { 
+            colors[6] = new Color[] { 
                                       Color.FromArgb(0, 0, 0), 
                                       Color.FromArgb(255, 255, 255)
                                     };
@@ -266,6 +278,7 @@ namespace Dither
             WarmTones,
             AutumnShades,
             FluentPurple,
+            Filosofem,
             BlackAndWhite
         }
     }
